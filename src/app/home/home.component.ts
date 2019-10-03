@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 import { DataService } from '../data.service';
-import {GameSystem} from '../Gamesystem';
+import {GameSystem} from '../gameSystem';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +23,7 @@ import {GameSystem} from '../Gamesystem';
             style({opacity: 1, transform: 'translateY(0)', offset:0}),
             style({opacity: .5, transform: 'translateY(35xp)', offset:.3}),
             style({opacity: 0, transform: 'translateY(-75%)', offset:1}),
-          ]))]), {optional: true})  
+          ]))]), {optional: true})
       ])
     ])
   ]
