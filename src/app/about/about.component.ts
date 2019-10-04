@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 import { DataService } from '../data.service';
-import { Game } from '../Games';
+import { Game } from '../game';
 
 @Component({
   selector: 'app-home',
@@ -23,7 +23,7 @@ import { Game } from '../Games';
             style({opacity: 1, transform: 'translateY(0)', offset:0}),
             style({opacity: .5, transform: 'translateY(35xp)', offset:.3}),
             style({opacity: 0, transform: 'translateY(-75%)', offset:1}),
-          ]))]), {optional: true})  
+          ]))]), {optional: true})
       ])
     ])
   ]
@@ -36,7 +36,7 @@ export class AboutComponent implements OnInit {
   genre: string;
   year: string;
 
-  gameSystems: Game[];
+  games: Game[];
 
   constructor(private service: DataService) { }
 
@@ -46,8 +46,8 @@ export class AboutComponent implements OnInit {
 
   get() {
     return this.service.getGames().subscribe( (gameSystemList: any) => {
-      this.gameSystems = gameSystemList;
-      this.count = this.gameSystems.length;
+      this.games = gameSystemList;
+      this.count = this.games.length;
     });
   }
 
@@ -56,10 +56,9 @@ export class AboutComponent implements OnInit {
 
     game.name = this.name;
     game.developer = this.developer;
-    game.gameSystem = this.gameSystem;
+    game.gamesystem = this.gameSystem;
     game.genre = this.genre;
     game.year = parseInt(this.year, 10);
-    console.log('--------------------------------');
 
     return this.service.postGame(game).subscribe((response: any) => {
       console.log(response);

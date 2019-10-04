@@ -2,21 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import {GameSystem} from './Gamesystem';
-import {Game} from './Games'
+import {GameSystem} from './gameSystem';
+import {Game} from './game';
 
 @Injectable()
 export class DataService {
 
   apiURL = 'https://compact-booking-253415.appspot.com';
-  
+
   constructor(private http: HttpClient) {}
 
   httpOptions = {
     headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin' : '*',
-        Accept : 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin' : '*',
+      Accept : 'application/json'
     })
   };
 
